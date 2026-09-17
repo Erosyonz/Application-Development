@@ -1,0 +1,93 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\obj\\Debug\\net8.0\\compressed\\p8ot93xuuy.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\obj\\Debug\\net8.0\\scopedcss\\bundle\\appdev.styles.css",
+      "PackagePath": "staticwebassets\\appdev.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\CAR_PATH.png",
+      "PackagePath": "staticwebassets\\images\\CAR_PATH.png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\FLAG_IMAGE.png",
+      "PackagePath": "staticwebassets\\images\\FLAG_IMAGE.png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\REGISTER_BG.PNG",
+      "PackagePath": "staticwebassets\\images\\REGISTER_BG.PNG"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\RIDER_IMAGE.png",
+      "PackagePath": "staticwebassets\\images\\RIDER_IMAGE.png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\TRACK_PATH.png",
+      "PackagePath": "staticwebassets\\images\\TRACK_PATH.png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\image-removebg-preview (2).png",
+      "PackagePath": "staticwebassets\\images\\image-removebg-preview (2).png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\image-removebg-preview (3).png",
+      "PackagePath": "staticwebassets\\images\\image-removebg-preview (3).png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\images\\image-removebg-preview (4).png",
+      "PackagePath": "staticwebassets\\images\\image-removebg-preview (4).png"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\L23Y16W17\\Documents\\appdev\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.appdev.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.appdev.props",
+      "PackagePath": "build\\appdev.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.appdev.props",
+      "PackagePath": "buildMultiTargeting\\appdev.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.appdev.props",
+      "PackagePath": "buildTransitive\\appdev.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

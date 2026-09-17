@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.login-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: #0a0c10;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(235, 30, 35, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 40px;
+    gap: 40px;
+}
+
+/* Visual Section */
+.visual-section {
+    flex: 1.2;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ambient-glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(235, 30, 35, 0.25) 0%, rgba(0,0,0,0) 70%);
+    z-index: 0;
+    filter: blur(40px);
+}
+
+.bg-track {
+    position: absolute;
+    width: 110%;
+    max-width: 750px;
+    object-fit: contain;
+    z-index: 1;
+    opacity: 0.85;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.hero-car {
+    position: relative;
+    width: 85%;
+    max-width: 580px;
+    z-index: 2;
+    filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.7));
+    animation: floatCar 6s ease-in-out infinite;
+}
+
+@keyframes floatCar {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-0.5deg); }
+}
+
+/* Glassmorphism Form Card */
+.form-card {
+    width: 380px;
+    background: rgba(18, 20, 26, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.brand-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #eb1e23;
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.form-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    margin-bottom: 32px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Floating Label Inputs */
+.input-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.custom-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 14px 16px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.input-group label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    color: #8a8d93;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+
+/* Floating Label Effects */
+.custom-input:focus ~ label,
+.custom-input:not(:placeholder-shown) ~ label {
+    top: 0;
+    transform: translateY(-50%) scale(0.85);
+    background: #12141a;
+    padding: 0 6px;
+    left: 10px;
+    color: #eb1e23;
+}
+
+.custom-input:focus {
+    border-color: #eb1e23;
+    background: rgba(235, 30, 35, 0.02);
+    box-shadow: 0 0 15px rgba(235, 30, 35, 0.15);
+}
+
+/* Accent Button */
+.btn-login {
+    width: 100%;
+    background: linear-gradient(135deg, #eb1e23 0%, #b31217 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 20px rgba(235, 30, 35, 0.3);
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(235, 30, 35, 0.45);
+    background: linear-gradient(135deg, #ff2429 0%, #c4141a 100%);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+.form-footer {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.register-link {
+    color: #8a8d93;
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.register-link span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.register-link:hover span {
+    color: #eb1e23;
+    text-decoration: underline;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .visual-section {
+        flex: none;
+        height: 220px;
+        width: 100%;
+    }
+
+    .form-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}

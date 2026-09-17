@@ -1,0 +1,55 @@
+@page "/register"
+@using Microsoft.AspNetCore.Components.Forms
+@inject NavigationManager Navigation
+
+<div class="register-wrapper">
+    <!-- Full-screen Background Image Container -->
+    <div class="bg-container">
+        <img src="images/REGISTER_BG.png" class="bg-image" alt="Background Cars" />
+    </div>
+
+    <!-- Centered White Form Card -->
+    <div class="form-card">
+        <h1 class="form-title">Be Part Of Us</h1>
+        
+        <EditForm Model="@registerModel" OnValidSubmit="HandleRegister">
+            <div class="input-group">
+                <label>Username</label>
+                <InputText @bind-Value="registerModel.Username" class="custom-input" />
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <InputText @bind-Value="registerModel.Password" type="password" class="custom-input" />
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="custom-input" />
+            </div>
+
+            <button type="submit" class="btn-register">Register</button>
+        </EditForm>
+
+        <NavLink href="" class="login-link">Already Have An Account? Login</NavLink>
+    </div>
+</div>
+
+@code {
+    private RegisterModel registerModel = new RegisterModel();
+
+    private void HandleRegister()
+    {
+        // Add user validation & registration logic here
+
+        // Redirect automatically to the login page (root route "/") after submitting
+        Navigation.NavigateTo("/");
+    }
+
+    public class RegisterModel
+    {
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string ConfirmPassword { get; set; } = string.Empty;
+    }
+}

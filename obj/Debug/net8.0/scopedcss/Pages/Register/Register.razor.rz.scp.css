@@ -1,0 +1,124 @@
+*[b-c452zgfnoj] {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.register-wrapper[b-c452zgfnoj] {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+/* Background Image Overlay */
+.bg-container[b-c452zgfnoj] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bg-image[b-c452zgfnoj] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.8);
+}
+
+/* Center Floating White Card */
+.form-card[b-c452zgfnoj] {
+    position: relative;
+    z-index: 2;
+    width: 380px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 20px;
+    padding: 45px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.form-title[b-c452zgfnoj] {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 35px;
+    font-family: Arial, sans-serif;
+    color: #000000;
+}
+
+form[b-c452zgfnoj] {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group[b-c452zgfnoj] {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-group label[b-c452zgfnoj] {
+    font-size: 11px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 4px;
+    font-family: Arial, sans-serif;
+}
+
+.custom-input[b-c452zgfnoj] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    color: #000000;
+    padding: 6px 0;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.custom-input:focus[b-c452zgfnoj] {
+    border-bottom-color: #000000;
+}
+
+.btn-register[b-c452zgfnoj] {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: opacity 0.2s;
+}
+
+.btn-register:hover[b-c452zgfnoj] {
+    opacity: 0.85;
+}
+
+.login-link[b-c452zgfnoj] {
+    color: #000000;
+    font-size: 10px;
+    text-decoration: none;
+    margin-top: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+}
+
+.login-link:hover[b-c452zgfnoj] {
+    text-decoration: underline;
+}

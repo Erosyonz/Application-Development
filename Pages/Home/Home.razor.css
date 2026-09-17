@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.home-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Left Hero Graphics */
+.hero-graphics {
+    position: relative;
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flag-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Sits behind */
+}
+
+.rider-hero {
+    position: relative;
+    z-index: 2; /* Forces rider in front of flag */
+    height: 85%;
+    max-width: 90%;
+    object-fit: contain;
+    margin-left: 10%;
+}
+
+/* Right Content Section */
+.content-section {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 5%;
+    z-index: 3;
+}
+
+.welcome-title {
+    font-family: Arial, sans-serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: #111111;
+    line-height: 1.1;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
