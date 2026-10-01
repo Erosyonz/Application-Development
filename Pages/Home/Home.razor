@@ -1,32 +1,241 @@
 @page "/home"
+@implements IAsyncDisposable
 @inject NavigationManager Navigation
+@inject IJSRuntime JS
+@inject IConfiguration Config
 
-<div class="home-wrapper">
-    <!-- Left Hero Graphics (Rider + Flag Overlay) -->
-    <div class="hero-graphics">
-        <div class="flag-wrapper">
-            <img src="images/FLAG_IMAGE.png" class="flag-bg" alt="Checkered Flag" />
-        </div>
-        <img src="images/RIDER_IMAGE.png" class="rider-hero" alt="Motorcycle Rider" />
-    </div>
+<PageTitle>Kargago Club</PageTitle>
 
-    <!-- Right Content Section -->
-    <div class="content-section">
-        <div class="ambient-glow"></div>
-        <div class="welcome-card">
-            <span class="brand-badge">Official Racing Hub</span>
-            <h1 class="welcome-title">WELCOME TO<br /><span class="highlight-text">THE CLUB</span></h1>
-            <p class="welcome-subtitle">
-                Experience high-octane performance, track events, and an exclusive community built for real riders.
-            </p>
-            <div class="cta-group">
-                <button class="btn-primary" @onclick='() => Navigation.NavigateTo("/RatingAndComment")'>
-                    COMMENTS & RATING
-                </button>
-                <button class="btn-secondary" @onclick='() => Navigation.NavigateTo("/about")'>
-                    LEARN MORE
-                </button>
+<div class="club-home">
+
+    <header class="topbar">
+        <a class="brand" href="/home"> <span class = "Kargago"> Kargago </span> Club</a>
+        <nav class="topnav" aria-label="Main">
+            <a href="/home#rides">Rides</a>
+            <a href="/RatingAndComment">Comments &amp; rating</a>
+            <a href="/about">About</a>
+            @* Change this to your actual register route *@
+            <a class="join" href="/register">Join the club</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="stage" id="rides" aria-label="Next ride and ride map">
+
+            <!-- Map (Leaflet draws into #club-map, see wwwroot/js/clubMap.js) -->
+            <div class="map-shell">
+                <div id="club-map" class="map"></div>
+                <div class="legend" aria-hidden="true">
+                    <span class="legend-item"><i class="swatch swatch--next"></i>Next ride</span>
+                    <span class="legend-item"><i class="swatch"></i>Later rides</span>
+                </div>
             </div>
-        </div>
-    </div>
+
+            @if (Next is not null)
+            {
+                var left = Remaining;
+
+                <aside class="panel">
+                    <p class="panel-label">Next ride</p>
+                    <h1 class="ride-title">@Next.Title</h1>
+
+                    <dl class="facts">
+                        <dt>When</dt>
+                        <dd>@Next.Start.ToString("dddd, MMMM d") at @Next.Start.ToString("h:mm tt")</dd>
+                        <dt>Meet at</dt>
+                        <dd>@Next.Meet</dd>
+                        <dt>Route</dt>
+                        <dd>@Next.Route, @Next.Distance</dd>
+                        <dt>Riding</dt>
+                        <dd>@KindLabel(Next.Kind)</dd>
+                    </dl>
+
+                    <div class="countdown" role="timer" aria-label="Time until the next ride">
+                        <div><strong>@((int)left.TotalDays)</strong><span>days</span></div>
+                        <div><strong>@left.Hours.ToString("00")</strong><span>hours</span></div>
+                        <div><strong>@left.Minutes.ToString("00")</strong><span>minutes</span></div>
+                        <div><strong>@left.Seconds.ToString("00")</strong><span>seconds</span></div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn btn-solid"
+                                aria-pressed="@(IsGoing(Next.Id) ? "true" : "false")"
+                                @onclick="() => ToggleGoing(Next.Id)">
+                            @(IsGoing(Next.Id) ? "You're in" : "Join this ride")
+                        </button>
+                        <button class="btn btn-line" @onclick="() => ShowOnMap(Next.Id)">Show on map</button>
+                    </div>
+                    <p class="going">@GoingText(Next)</p>
+
+                    <div class="filters" role="group" aria-label="Filter rides">
+                        @foreach (var f in _filters)
+                        {
+                            <button class="chip"
+                                    aria-pressed="@(_filter == f ? "true" : "false")"
+                                    @onclick="() => SetFilter(f)">
+                                @f
+                            </button>
+                        }
+                    </div>
+
+                    @if (Visible.Skip(1).Any())
+                    {
+                        <h2 class="list-title">Coming up</h2>
+                        <ul class="ride-list">
+                            @foreach (var r in Visible.Skip(1))
+                            {
+                                <li>
+                                    <button class="ride-row" @onclick="() => ShowOnMap(r.Id)">
+                                        <span class="date"><b>@r.Start.Day</b>@r.Start.ToString("MMM")</span>
+                                        <span class="meta">
+                                            <strong>@r.Title</strong>
+                                            <small>@r.Start.ToString("ddd, h:mm tt") at @r.Meet</small>
+                                        </span>
+                                        <span class="kind">@KindLabel(r.Kind)</span>
+                                    </button>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </aside>
+            }
+        </section>
+
+        <section class="rules" aria-labelledby="rules-title">
+            <h2 id="rules-title">Before you roll out</h2>
+            <div class="rule-grid">
+                <article>
+                    <h3>Arrive 15 minutes early</h3>
+                    <p>Fuel up and check your tires at home. The group leaves on time, with or without a late start.</p>
+                </article>
+                <article>
+                    <h3>Hold your position</h3>
+                    <p>Bikes ride staggered on open road and single file through corners. Cars leave a full gap.</p>
+                </article>
+                <article>
+                    <h3>Nobody rides alone</h3>
+                    <p>If someone pulls over, the last rider or driver stops with them and the group waits at the next turn.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <span><span class = "Kargago"> Kargago </span> Club</span>
+        <nav aria-label="Footer">
+            <a href="/RatingAndComment">Comments &amp; rating</a>
+            <a href="/about">About</a>
+        </nav>
+    </footer>
 </div>
+
+@code {
+    private record Ride(int Id, string Title, string Kind, DateTime Start, string Meet,
+                        string Route, string Distance, double Lat, double Lng, int Going);
+
+    private readonly string[] _filters = { "All", "Motorcycles", "Cars" };
+    private string _filter = "All";
+    private List<Ride> _all = new();
+    private readonly HashSet<int> _going = new();
+    private System.Threading.Timer? _timer;
+
+    // Earliest ride in the current filter
+    private Ride? Next => Visible.FirstOrDefault();
+
+    private IEnumerable<Ride> Visible =>
+        _all.Where(r => _filter == "All" || r.Kind == _filter || r.Kind == "Everyone")
+            .OrderBy(r => r.Start);
+
+    private TimeSpan Remaining
+    {
+        get
+        {
+            if (Next is null) return TimeSpan.Zero;
+            var t = Next.Start - DateTime.Now;
+            return t > TimeSpan.Zero ? t : TimeSpan.Zero;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        // SAMPLE DATA: replace with your real rides (database or API).
+        // Lat/Lng are the pin positions, so swap in your real meeting spots.
+        _all = new List<Ride>
+        {
+            new(1, "Sunrise Coast Run", "Motorcycles", NextOccurrence(DayOfWeek.Saturday, 6),
+                "Harbor View Lot", "Coast road loop", "86 km", 37.8199, -122.4783, 14),
+            new(2, "Canyon Cars Meet", "Cars", NextOccurrence(DayOfWeek.Sunday, 8),
+                "Ridge Road Gas Stop", "Canyon road and back", "120 km", 37.8716, -122.2727, 9),
+            new(3, "Friday Night Cruise", "Everyone", NextOccurrence(DayOfWeek.Friday, 19),
+                "Old Town Plaza", "City loop", "32 km", 37.7599, -122.4148, 22),
+            new(4, "Southern Ridge Rally", "Everyone", NextOccurrence(DayOfWeek.Saturday, 7).AddDays(7),
+                "South Gate Parking", "Ridge highway", "145 km", 37.6879, -122.4702, 17),
+        };
+
+        _timer = new System.Threading.Timer(_ => InvokeAsync(StateHasChanged), null, 1000, 1000);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var apiKey = Config["Carto:ApiKey"] ?? string.Empty;
+            await JS.InvokeVoidAsync("clubMap.init", "club-map", Payload(), Next?.Id ?? 0, apiKey);
+        }
+    }
+
+    private static DateTime NextOccurrence(DayOfWeek day, int hour)
+    {
+        var today = DateTime.Today;
+        var add = ((int)day - (int)today.DayOfWeek + 7) % 7;
+        var dt = today.AddDays(add).AddHours(hour);
+        return dt <= DateTime.Now ? dt.AddDays(7) : dt;
+    }
+
+    private object[] Payload() =>
+        Visible.Select(r => (object)new
+        {
+            id = r.Id,
+            title = r.Title,
+            when = r.Start.ToString("ddd, MMM d") + " at " + r.Start.ToString("h:mm tt"),
+            meet = r.Meet,
+            route = r.Route,
+            distance = r.Distance,
+            kind = KindLabel(r.Kind),
+            lat = r.Lat,
+            lng = r.Lng
+        }).ToArray();
+
+    private async Task SetFilter(string filter)
+    {
+        _filter = filter;
+        await JS.InvokeVoidAsync("clubMap.setRides", Payload(), Next?.Id ?? 0);
+    }
+
+    private async Task ShowOnMap(int id) =>
+        await JS.InvokeVoidAsync("clubMap.focus", id);
+
+    private bool IsGoing(int id) => _going.Contains(id);
+
+    private void ToggleGoing(int id)
+    {
+        // Local only for now. Save the RSVP to your backend here.
+        if (!_going.Remove(id)) _going.Add(id);
+    }
+
+    private string GoingText(Ride r)
+    {
+        var count = r.Going + (IsGoing(r.Id) ? 1 : 0);
+        return count == 1 ? "1 rider is in" : $"{count} riders are in";
+    }
+
+    private static string KindLabel(string kind) =>
+        kind == "Everyone" ? "Cars and motorcycles" : kind;
+
+    public async ValueTask DisposeAsync()
+    {
+        _timer?.Dispose();
+        try { await JS.InvokeVoidAsync("clubMap.destroy"); }
+        catch { /* page is already being torn down */ }
+    }
+}
