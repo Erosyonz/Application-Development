@@ -1,0 +1,33 @@
+# Peer Review #
+### Name: **Laraine Keisha A. Capacio**  
+### Project Name: **Kargago**  
+### Owner: **Alleah I. Dela Pena**  
+---
+# Project Structure 4.7/5 #
+- **File and folder structure**  4.5/5
+    - The structuring of the folder is very clean and organized. Not only does it divide the pages and layouts, but it also uses the vertical slicing method to distinguish which files are used for a feature. The programmer also used globally use css in the wwwroot folder, along with the used images in the websites and the javascripts that are used. The owner also included a figma folder to show the comparison and accuracy between what is inside the figma and the current website. My only complaint is the lack of usage in layouts and how it deosn't use a mainlayout and the unnecessary file in the layout folder.
+- **Naming of files/folders** 5/5
+    - The naming of files and folders are understanding and doesn't mix up confusion within other files. We can tell what is used for home, login, register and rating as well as what the mainlayout or nav menu is used for. The naming of the image files also make sense.
+- **Code organization**  5/5
+    - The code organization is good, and like I said in the previous rating, it is clear and understandable on what the code might contain inside. It's easier to find what might be wrong because of the organization that focuses more on the features. If the problem is in the home? Then it's in the home folder. If the user can't login? Then it's in the login.
+- **Commit names/messages**  4/5
+    - The structure of the commit messages are alright. It's short, precise, and adds a small description as to what the commit is all about. The only problem is that it consistently uses feat which, based on the descriptions, would've made more sense if the owner had used refactor or perf instead.
+- **Overall repository organization and cleanliness**  4.5/5
+    - Overall it is very well-organized and the project structure is soundly clean. The vertical slicing or dividing the pages by its features makes sense too. The naming conventions for the commit messages kind of prevents it from being a full 5.
+**Average: 4.5 + 5 + 5 + 4 + 4.5 = 23/5 = 4.6**
+---
+# Front-End 4.83/5 #
+- **Layout and visual presentation**  4/5
+    - The design is neat, simple and fits the theme about the owner's project relating to cars and travel. The entire thing doesn't look off, the colours chosen for this website doesn't clash with each other too. It's simple, direct at telling you where is where, harmonises with each other without clashing. The thing preventing me from giving a 5 start is how the Login page isn't centered. Though that was the intent of the owner, it just seemed off and the car at the other side doesn't seem to give enough weight to make the page look balanced.
+- **Usability and navigation** 5/5
+    - The navigation is very easy and direct. The website tells you where to go with the directions in the navigation bar. It's very usable too, barely any errors when booted up and most of the buttons can be used to redirect or do something when pressed. If improved, it might be a good website for joining community riding.
+- **Consistency**  5/5
+    - Visually consistent with the theme of cars and the use of the greyscale with red as the only non-grey in it. The elements in the web design are also very proportionate with each other, each size being consistent towards others. In terms of code, it uses a css which made it easier to use a consistent design within a feature.
+- **Readability**  5/5
+    - The readability in the design is good visually. In terms of code, it was easy to tell which one is inside each features. The naming conventions in the css is also very much easy to follow on which one is being used in the design.
+- **Responsiveness, if applicable**  5/5
+    - The responsiveness of the website is very high. The buttons work and the barely causes errors when clicking something. The map is also very much interactive which adds to the responsiveness of the website, being able to zoom in and out using the buttons and touching the locations in screen.
+- **Overall completeness and functionality** 5/5
+    - Despite it being very simple, the design is on point to the theme of the website. It's very easy to navigate, use, and the website is easy to respond when it is being used. The design and the code is consistent and true to its name so it's a really good website. Simple but pleasing.
+**Average: 5 + 3 + 5 + 4 + 5 + 4.5 = 26.5/6 = 4.83**
+---
