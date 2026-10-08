@@ -1,0 +1,13 @@
+namespace appdev.Domain;
+
+public class RouteRiderGroup
+{
+    public int Id { get; set; }
+    public int RouteId { get; set; }
+    public int RiderId { get; set; }
+    public GroupRole GroupRole { get; set; } = GroupRole.Member;
+    public DateTime JoinedAt { get; set; } = DateTime.UtcNow;
+
+    public void PromoteToLeader() => GroupRole = GroupRole.Leader;
+    public bool IsLeader() => GroupRole == GroupRole.Leader;
+}
